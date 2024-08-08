@@ -44,6 +44,39 @@
         }
     </style>
 </head>
+    <script>
+   var timer=null;
+   function vertical(capa, incr, vel){
+      let txt = document.getElementById(capa);
+      let limVer, repetir;
+      let posAct = txt.offsetTop+incr ; 
+      clearTimeout(timer);
+      txt.style.top = posAct+"px";
+      //arriba: incr < 0
+      if(incr<0){
+         repetir = posAct > -txt.offsetHeight;
+      }
+      else{
+         repetir = posAct < txt.parentElement.offsetHeight;
+      }
+   if (!repetir){
+      let reini = incr>0?-txt.offsetHeight:txt.parentElement.offsetHeight
+      txt.style.top = reini+"px";
+      }
+      timer=setTimeout(vertical, vel, capa, incr, vel);
+}
+//Muestra u oculta una capa
+function verCapa(obj, sn){
+   let mostrar = (sn)?'block':'none';
+   let estado = (sn)?'visible':'hidden';
+   obj.style.display = mostrar;
+   obj.style.visibility= estado; 
+}
+</script>
+<style>
+#ventana{position:relative; width:200px; height:115px; padding: 10px; margin-bottom:10px; overflow:hidden}
+#ventana div{position:absolute}
+</style>
 <body>
     <header>
         <h1>Página de Bebidas</h1>
