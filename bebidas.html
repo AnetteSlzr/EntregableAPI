@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Bebidas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #922512;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .drink {
+            background-color: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .drink img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Página de Bebidas</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Bebidas Populares</h2>
+            <div class="drink">
+                <h3>Mojito</h3>
+                <img src="mojito.jpg" alt="Mojito">
+                <p>El mojito es un cóctel tradicional cubano. Los ingredientes básicos son ron, azúcar (tradicionalmente azúcar de caña), limón, menta o hierbabuena y agua con gas.</p>
+            </div>
+            <div class="drink">
+                <h3>Piña Colada</h3>
+                <img src="pina_colada.jpg" alt="Piña Colada">
+                <p>La piña colada es un cóctel originario de Puerto Rico hecho con ron, crema de coco o leche de coco y jugo de piña.</p>
+            </div>
+            <div class="drink">
+                <h3>Margarita</h3>
+                <img src="margarita.jpg" alt="Margarita">
+                <p>La margarita es un cóctel mexicano preparado a base de tequila, triple seco y jugo de lima o limón.</p>
+            </div>
+        </section>
+    </div>
+<table>>
+    <script>
+        var req = new XMLHttpRequest();
+        var url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+        var api_key = "X8TvtZQofxrG9RRXPJws6LgBZKjDkMyv3nJ8zaVb";
+        req.open("GET", url + api_key);
+        req.send();
+        req.addEventListener("load", function(){
+        if(req.status == 200 && req.readyState == 4){
+        var response = JSON.parse(req.responseText);
+        document.getElementById("title").textContent = response.title;
+        document.getElementById("date").textContent = response.date;
+        document.getElementById("pic").src = response.hdurl;
+        document.getElementById("explanation").textContent = response.explanation;
+        }
+        })
+        </script>
+        
+       <table><center> <h1>Bebidas de todo tipo</h1></center></table>
+        <h2 id="title"></h2>
+        <center><img id="pic" src="bebidastodo.jpg" width="50%" height="50%"
+         alt="https://www.thecocktaildb.com/api/json/v1/1/random.php" width="100%"></center>
+        <p id="explanation"></p>
+       <center> <h2>API consumida: </h2></center>
+       <center><a href="https://www.thecocktaildb.com/api/json/v1/1/random.php"> https://www.thecocktaildb.com/api/json/v1/1/random.php</a></center>        
+</table>
+
+</body>
+</html>
